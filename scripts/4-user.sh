@@ -172,7 +172,7 @@ if [[ ${FLATPAK} == true ]]; then
 "
 	sudo pacman -S --noconfirm --needed flatpak
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
+	sleep 3
 	while read -r line; do
 		if [[ ${line} =~ '# ---' ]]; then
 			continue

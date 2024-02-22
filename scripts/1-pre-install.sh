@@ -26,6 +26,7 @@ echo "
 sed -i 's/^[#[:space:]]*ParallelDownloads.*/ParallelDownloads = 5/' /etc/pacman.conf
 sed -i 's/^[#[:space:]]*Color/Color\nILoveCandy/' /etc/pacman.conf
 
+pacman -Sy
 pacman -S --noconfirm archlinux-keyring # Update keyrings to latest to prevent packages failing to install
 pacman -S --noconfirm --needed arch-install-scripts glibc
 pacman -S --noconfirm --needed gptfdisk btrfs-progs
