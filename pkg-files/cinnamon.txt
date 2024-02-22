@@ -1,0 +1,14 @@
+cinnamon
+gnome-terminal
+lightdm
+lightdm-gtk-greeter
+lightdm-gtk-greeter-settings
+nemo-fileroller
+xed
+# ---END OF MINIMAL INSTALLATION--- #
+blueman
+cinnamon-translations
+gnome-screenshot
+gnome-system-monitor
+nemo-share
+# --------------------------------- #

@@ -1,0 +1,19 @@
+# ---END OF MINIMAL INSTALLATION--- #
+brave-bin
+hardcode-fixer-git
+libadwaita-without-adwaita-git
+librewolf-bin
+mintstick-git
+sublime-text-4
+ttf-icomoon-feather
+ventoy-bin
+vscodium-bin
+# --------------------------------- # CINNAMON specific software
+xviewer
+# --------------------------------- # GNOME specific software
+# --------------------------------- # KDE specific software
+arc-kde-git
+arcolinux-sddm-simplicity
+arcolinux-sddm-sugar-candy
+# --------------------------------- # XFCE specific software
+# --------------------------------- #

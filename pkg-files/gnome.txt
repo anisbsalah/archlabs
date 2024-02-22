@@ -1,0 +1,5 @@
+gnome
+# ---END OF MINIMAL INSTALLATION--- #
+gnome-extra
+gnome-bluetooth
+# --------------------------------- #
