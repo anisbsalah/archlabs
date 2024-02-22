@@ -23,7 +23,12 @@ echo "
  Enabling essential services
 ==============================================================================
 "
-services=(acpid avahi-daemon bluetooth cronie cups ntpd NetworkManager reflector sshd tlp wpa_supplicant)
+if [[ ${INSTALL_TYPE} == FULL ]]; then
+	services=(acpid avahi-daemon bluetooth cronie cups ntpd NetworkManager reflector sshd tlp wpa_supplicant)
+else
+	services=(reflector sshd)
+fi
+
 for srv in "${services[@]}"; do
 	case ${srv} in
 	"ntpd")
