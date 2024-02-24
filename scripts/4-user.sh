@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # @file User
-# @brief Installs pacman packages, desktop environment and AUR packages.
+# @brief Installs pacman packages, desktop environment, AUR packages and flatpak.
 
 echo "
 ==============================================================================
@@ -180,24 +180,6 @@ if [[ ${FLATPAK} == true ]]; then
 		flatpak install -y flathub "${line}"
 	done < <(sed -n "/END OF ${INSTALL_TYPE^^} INSTALLATION/q;p" "$HOME/archlabs/pkg-files/flatpak-pkgs.txt")
 fi
-
-echo "
-==============================================================================
- Xorg/Keyboard configuration
-==============================================================================
-"
-echo "> Set X11 keymap to: ${KEYMAP}"
-sudo mkdir -p /etc/X11/xorg.conf.d
-sudo tee "/etc/X11/xorg.conf.d/00-keyboard.conf" <<EOF
-# Written by systemd-localed(8), read by systemd-localed and Xorg. It's
-# probably wise not to edit this file manually. Use localectl(1) to
-# update this file.
-Section "InputClass"
-        Identifier "system-keyboard"
-        MatchIsKeyboard "on"
-        Option "XkbLayout" "${KEYMAP}"
-EndSection
-EOF
 
 echo "
 ==============================================================================

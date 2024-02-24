@@ -56,6 +56,24 @@ fi
 
 echo "
 ==============================================================================
+ Xorg/Keyboard configuration
+==============================================================================
+"
+echo "> Set X11 keymap to: ${KEYMAP}"
+mkdir -p /etc/X11/xorg.conf.d
+tee "/etc/X11/xorg.conf.d/00-keyboard.conf" <<EOF
+# Written by systemd-localed(8), read by systemd-localed and Xorg. It's
+# probably wise not to edit this file manually. Use localectl(1) to
+# update this file.
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "${KEYMAP}"
+EndSection
+EOF
+
+echo "
+==============================================================================
  Allowing members of group 'wheel' sudo access
 ==============================================================================
 "

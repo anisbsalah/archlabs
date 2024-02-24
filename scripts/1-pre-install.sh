@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # @file Pre-Install
-# @brief Contains the steps necessary to partition the disk, format the partitions and mount the filesystems.
+# @brief Contains the steps necessary to partition the disk, format the partitions and mount the file systems.
 
 echo "
 ==============================================================================
