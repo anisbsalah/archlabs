@@ -22,6 +22,7 @@ noto-fonts
 noto-fonts-emoji
 terminus-font
 ttf-hack
+firefox
 # ---END OF MINIMAL INSTALLATION--- #
 # --------------------------------- # Networking Software
 avahi
@@ -170,11 +171,13 @@ dconf-editor
 dialog
 evince
 exa
+expac
 ffmpegthumbs
 htop
 icoutils
 imagemagick
 kitty
+keepassxc
 kvantum
 libreoffice-still
 make
@@ -190,6 +193,7 @@ rofi
 rsync
 shellcheck
 shfmt
+starship
 telegram-desktop
 vlc
 which

@@ -1,9 +1,9 @@
 # ---END OF MINIMAL INSTALLATION--- #
 brave-bin
 hardcode-fixer-git
-libadwaita-without-adwaita-git
 librewolf-bin
 mintstick-git
+oh-my-zsh-git
 sublime-text-4
 ttf-icomoon-feather
 ventoy-bin
