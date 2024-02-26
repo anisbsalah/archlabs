@@ -11,10 +11,6 @@ fi
 printf "\n[*] Installing 'git'...\n\n"
 pacman -Sy --noconfirm --needed git
 
-# Installing wget
-printf "\n[*] Installing 'wget'...\n\n"
-pacman -S --noconfirm --needed wget
-
 # Cloning project
 printf "\n[*] Cloning 'archlabs' project...\n\n"
 git clone https://github.com/anisbsalah/archlabs.git

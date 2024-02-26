@@ -172,13 +172,6 @@ if [[ ${FLATPAK} == true ]]; then
 "
 	sudo pacman -S --noconfirm --needed flatpak
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-	sleep 3
-	while read -r line; do
-		if [[ ${line} =~ '# ---' ]]; then
-			continue
-		fi
-		flatpak install -y flathub "${line}"
-	done < <(sed -n "/END OF ${INSTALL_TYPE^^} INSTALLATION/q;p" "$HOME/archlabs/pkg-files/flatpak-pkgs.txt")
 fi
 
 echo "
