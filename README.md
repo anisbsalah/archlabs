@@ -69,4 +69,4 @@ Make sure the domains `ipapi.co` and `ifconfig.co` don't get blocked by your fir
 
 ## Credits
 
-- Inspired from ChrisTitusTech: [ArchTitus](https://github.com/ChrisTitusTech/ArchTitus)
+- Inspired by ChrisTitusTech: [ArchTitus](https://github.com/ChrisTitusTech/ArchTitus)

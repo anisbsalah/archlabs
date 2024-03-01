@@ -127,7 +127,6 @@ cifs-utils
 dosfstools
 e2fsprogs
 exfat-utils
-filelight
 fuse2
 fuse3
 fuseiso
@@ -175,6 +174,7 @@ expac
 fd
 ffmpegthumbnailer
 ffmpegthumbs
+file
 fzf
 htop
 icoutils
