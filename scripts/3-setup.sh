@@ -54,7 +54,7 @@ echo "
 # Set the console keyboard layout
 echo "KEYMAP=${KEYMAP}" | tee /etc/vconsole.conf
 # Set the console font
-echo 'FONT=ter-v18b' | tee -a /etc/vconsole.conf
+echo 'FONT=ter-v20b' | tee -a /etc/vconsole.conf
 
 echo "
 ==============================================================================
