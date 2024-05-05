@@ -93,6 +93,31 @@ echo
 echo "[*] Updating database..."
 sudo pacman -Sy
 
+echo "
+==============================================================================
+ Adding the Chaotic-AUR repository
+==============================================================================
+"
+echo "[*] Getting the primary key for Chaotic-AUR..."
+echo
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+echo
+echo "[*] Getting the chaotic keyring..."
+echo
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+echo
+echo "[*] Getting the chaotic mirrorlist..."
+echo
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+echo
+echo "[*] Activating the Chaotic-AUR repo..."
+echo '
+
+[chaotic-aur]
+SigLevel = Required DatabaseOptional
+Include = /etc/pacman.d/chaotic-mirrorlist' | sudo tee --append /etc/pacman.conf
+
 if [[ ${AUR_HELPER} != none ]]; then
 	echo "
 ==============================================================================
