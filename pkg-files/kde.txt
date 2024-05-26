@@ -24,12 +24,12 @@ kimageformats
 kinit
 kio-fuse
 kompare
-ksysguard
+libksysguard
 networkmanager-qt5
 okular
-packagekit-qt5
+packagekit-qt6
 partitionmanager
-plasma-wayland-session
+plasma-wayland-protocols
 print-manager
 solid
 spectacle

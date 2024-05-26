@@ -87,6 +87,21 @@ sed -i 's/^[#[:space:]]*\(%wheel[[:space:]]*ALL=(ALL:ALL)[[:space:]]*ALL\)$/\1/g
 
 echo "
 ==============================================================================
+ Initramfs
+==============================================================================
+"
+# Initramfs
+if [[ ${FILESYSTEM} == btrfs ]]; then
+	sed -i 's/^MODULES=()/MODULES=(btrfs)/' /etc/mkinitcpio.conf
+fi
+sed -i 's/^BINARIES=()/BINARIES=(setfont)/' /etc/mkinitcpio.conf
+# sed -i 's/^\(HOOKS=["(]*base .*\) keymap consolefont \(.*\)$/\1 sd-vconsole \2/g' /etc/mkinitcpio.conf
+sed -i '/^HOOKS=/s/autodetect\( \|$\)/autodetect microcode\1/g' /etc/mkinitcpio.conf
+sed -i 's/^[#[:space:]]*COMPRESSION="zstd"/COMPRESSION="zstd"/' /etc/mkinitcpio.conf
+mkinitcpio -P
+
+echo "
+==============================================================================
  Cleaning
 ==============================================================================
 "
