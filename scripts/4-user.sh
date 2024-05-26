@@ -32,6 +32,8 @@ while read -r line; do
 	sudo pacman -S --noconfirm --needed "${line}"
 done < <(sed -n "/END OF ${INSTALL_TYPE^^} INSTALLATION/q;p" "${HOME}/archlabs/pkg-files/pacman-pkgs.txt")
 
+# ----------------------------------------------------------------------------------------------------
+
 echo "
 ==============================================================================
  Installing ${DESKTOP_ENV^^} desktop environment
@@ -57,20 +59,26 @@ case ${DESKTOP_ENV} in
 *) ;;
 esac
 
+# ----------------------------------------------------------------------------------------------------
+
 echo "
 ==============================================================================
  Adding the ArcoLinux repositories
 ==============================================================================
 "
+arco_repo_db=$(wget -qO- https://api.github.com/repos/arcolinux/arcolinux_repo/contents/x86_64)
+
 echo "[*] Getting the ArcoLinux keys..."
 echo
-sudo wget https://github.com/arcolinux/arcolinux_repo/raw/main/x86_64/arcolinux-keyring-20251209-3-any.pkg.tar.zst -O /tmp/arcolinux-keyring-20251209-3-any.pkg.tar.zst
-sudo pacman -U --noconfirm --needed /tmp/arcolinux-keyring-20251209-3-any.pkg.tar.zst
+sudo wget "$(echo "${arco_repo_db}" | jq -r '[.[] | select(.name | contains("arcolinux-keyring")) | .name] | .[0] | sub("arcolinux-keyring-"; "https://github.com/arcolinux/arcolinux_repo/raw/main/x86_64/arcolinux-keyring-")')" -O /tmp/arcolinux-keyring-git-any.pkg.tar.zst
+sudo pacman -U --noconfirm --needed /tmp/arcolinux-keyring-git-any.pkg.tar.zst
 echo
 echo "[*] Getting the latest ArcoLinux mirrors file..."
 echo
-sudo wget https://github.com/arcolinux/arcolinux_repo/raw/main/x86_64/arcolinux-mirrorlist-git-23.06-01-any.pkg.tar.zst -O /tmp/arcolinux-mirrorlist-git-23.06-01-any.pkg.tar.zst
-sudo pacman -U --noconfirm --needed /tmp/arcolinux-mirrorlist-git-23.06-01-any.pkg.tar.zst
+sudo wget "$(echo "${arco_repo_db}" | jq -r '[.[] | select(.name | contains("arcolinux-mirrorlist-git-")) | .name] | .[0] | sub("arcolinux-mirrorlist-git-"; "https://github.com/arcolinux/arcolinux_repo/raw/main/x86_64/arcolinux-mirrorlist-git-")')" -O /tmp/arcolinux-mirrorlist-git-any.pkg.tar.zst
+sudo pacman -U --noconfirm --needed /tmp/arcolinux-mirrorlist-git-any.pkg.tar.zst
+echo
+echo "[*] Activating the ArcoLinux repos..."
 echo '
 
 #[arcolinux_repo_testing]
@@ -88,10 +96,6 @@ Include = /etc/pacman.d/arcolinux-mirrorlist
 [arcolinux_repo_xlarge]
 SigLevel = PackageRequired DatabaseNever
 Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.conf
-
-echo
-echo "[*] Updating database..."
-sudo pacman -Sy
 
 echo "
 ==============================================================================
@@ -117,6 +121,10 @@ echo '
 [chaotic-aur]
 SigLevel = Required DatabaseOptional
 Include = /etc/pacman.d/chaotic-mirrorlist' | sudo tee --append /etc/pacman.conf
+
+echo
+echo "[*] Updating database..."
+sudo pacman -Sy
 
 if [[ ${AUR_HELPER} != none ]]; then
 	echo "
@@ -189,15 +197,19 @@ if [[ ${AUR_HELPER} != none ]]; then
 
 fi
 
+# ----------------------------------------------------------------------------------------------------
+
 if [[ ${FLATPAK} == true ]]; then
 	echo "
 ==============================================================================
- Installing flatpak packages
+ Installing flatpak
 ==============================================================================
 "
 	sudo pacman -S --noconfirm --needed flatpak
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
+
+# ----------------------------------------------------------------------------------------------------
 
 echo "
 ==============================================================================
