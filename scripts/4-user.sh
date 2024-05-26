@@ -105,11 +105,11 @@ sudo pacman-key --lsign-key 3056513887B78AEB
 echo
 echo "[*] Getting the chaotic keyring..."
 echo
-sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U --noconfirm --needed 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 echo
 echo "[*] Getting the chaotic mirrorlist..."
 echo
-sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+sudo pacman -U --noconfirm --needed 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 echo
 echo "[*] Activating the Chaotic-AUR repo..."
 echo '
