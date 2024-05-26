@@ -201,6 +201,7 @@ shfmt
 starship
 telegram-desktop
 vlc
+wezterm
 yad
 yazi
 zenity
